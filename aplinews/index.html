@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApliNews — AI-Powered News Aggregator | Aplitiq</title>
+    <meta name="description" content="ApliNews is a smart AI news aggregator for iOS and Android. Get personalized news from trusted publishers, powered by Aplitiq's intelligent algorithms.">
+    <link rel="stylesheet" href="/css/shared.css">
+    <style>
+        /* ---- Hero ---- */
+        .hero {
+            background: linear-gradient(135deg, #0A1628 0%, var(--deep-slate) 50%, #0A2030 100%);
+            padding: 6rem 5%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(20,184,166,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content { flex: 1; min-width: 300px; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(20,184,166,0.15);
+            border: 1px solid rgba(20,184,166,0.3);
+            color: var(--electric-teal);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--pure-white);
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span { color: var(--electric-teal); }
+
+        .hero-tagline {
+            font-size: 1.4rem;
+            color: #CBD5E1;
+            margin-bottom: 1.25rem;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            color: #94A3B8;
+            font-size: 1rem;
+            line-height: 1.75;
+            max-width: 520px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.08);
+            border: 1.5px solid rgba(255,255,255,0.2);
+            color: var(--pure-white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            transition: all 0.25s;
+        }
+
+        .store-btn:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.4);
+            color: var(--pure-white);
+            transform: translateY(-2px);
+        }
+
+        .store-btn-icon { font-size: 1.6rem; line-height: 1; }
+
+        .store-btn-text { text-align: left; }
+        .store-btn-text small { display: block; font-size: 0.65rem; color: #94A3B8; letter-spacing: 0.5px; }
+        .store-btn-text strong { display: block; font-size: 0.9rem; font-weight: 600; }
+
+        /* Phone mockup */
+        .hero-visual { flex: 0 0 auto; display: flex; justify-content: center; }
+
+        .phone-wrap {
+            position: relative;
+            padding: 1rem;
+        }
+
+        .phone-glow {
+            position: absolute;
+            inset: -20px;
+            background: radial-gradient(ellipse, rgba(20,184,166,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .phone {
+            width: 240px;
+            height: 490px;
+            background: #0F172A;
+            border-radius: 38px;
+            border: 7px solid #2D3F5A;
+            box-shadow:
+                0 40px 80px rgba(0,0,0,0.5),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-notch {
+            width: 80px;
+            height: 22px;
+            background: #0F172A;
+            border-radius: 0 0 14px 14px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .phone-screen {
+            background: var(--crisp-off-white);
+            height: calc(100% - 22px);
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .app-header {
+            background: var(--deep-slate);
+            padding: 0.6rem 0.8rem 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .app-header-logo {
+            color: var(--electric-teal);
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .app-header-icon {
+            width: 18px;
+            height: 18px;
+            background: rgba(20,184,166,0.2);
+            border-radius: 50%;
+            border: 1.5px solid var(--electric-teal);
+        }
+
+        .app-categories {
+            display: flex;
+            gap: 0.3rem;
+            padding: 0.5rem 0.6rem;
+            background: white;
+            border-bottom: 1px solid #E2E8F0;
+            overflow: hidden;
+        }
+
+        .cat-chip {
+            background: var(--teal-light);
+            color: var(--teal-dark);
+            font-size: 0.5rem;
+            font-weight: 600;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .cat-chip.active {
+            background: var(--electric-teal);
+            color: white;
+        }
+
+        .news-feed { padding: 0.5rem 0.6rem; }
+
+        .news-card {
+            background: white;
+            border-radius: 8px;
+            padding: 0.6rem;
+            margin-bottom: 0.45rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            border: 1px solid #F1F5F9;
+        }
+
+        .news-card-top {
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-start;
+        }
+
+        .news-thumb {
+            width: 45px;
+            height: 40px;
+            border-radius: 5px;
+            flex-shrink: 0;
+        }
+
+        .news-card-cat {
+            font-size: 0.45rem;
+            color: var(--electric-teal);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.15rem;
+        }
+
+        .news-card-title {
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--deep-slate);
+            line-height: 1.3;
+            margin-bottom: 0.2rem;
+        }
+
+        .news-card-meta {
+            font-size: 0.45rem;
+            color: var(--muted-slate);
+        }
+
+        .news-card-actions {
+            display: flex;
+            gap: 0.4rem;
+            margin-top: 0.4rem;
+            padding-top: 0.4rem;
+            border-top: 1px solid #F1F5F9;
+        }
+
+        .action-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #F1F5F9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.45rem;
+        }
+
+        .action-dot.liked { background: #FEE2E2; }
+
+        /* ---- Platform pills ---- */
+        .platform-row {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .platform-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #CBD5E1;
+            font-size: 0.8rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+        }
+
+        .platform-pill span { font-size: 1rem; }
+
+        /* ---- Features Grid ---- */
+        .features {
+            padding: 6rem 5%;
+            background: var(--pure-white);
+        }
+
+        .features-inner { max-width: 1100px; margin: 0 auto; }
+
+        .features-header { text-align: center; margin-bottom: 4rem; }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--crisp-off-white);
+            border: 1px solid var(--light-border);
+            border-radius: 14px;
+            padding: 2rem;
+            transition: box-shadow 0.25s, transform 0.25s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--teal-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.05rem;
+            color: var(--deep-slate);
+            margin-bottom: 0.6rem;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--muted-slate);
+            margin: 0;
+        }
+
+        /* ---- AI Section ---- */
+        .ai-section {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--deep-slate) 0%, #102035 100%);
+            color: white;
+        }
+
+        .ai-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .ai-content { flex: 1; min-width: 300px; }
+
+        .ai-content .section-eyebrow { color: var(--electric-teal); margin-bottom: 0.75rem; }
+
+        .ai-content h2 {
+            color: var(--pure-white);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .ai-content p { color: #94A3B8; line-height: 1.8; margin-bottom: 2rem; }
+
+        .ai-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .ai-stat {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .ai-stat-number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--electric-teal);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .ai-stat-label {
+            font-size: 0.75rem;
+            color: #64748B;
+            line-height: 1.4;
+        }
+
+        .ai-visual {
+            flex: 0 0 380px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .ai-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .ai-card-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(20,184,166,0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .ai-card h4 { color: white; font-size: 0.9rem; margin: 0 0 0.2rem; }
+        .ai-card p { color: #64748B; font-size: 0.8rem; margin: 0; line-height: 1.5; }
+
+        /* ---- Interactions Section ---- */
+        .interactions {
+            padding: 6rem 5%;
+            background: var(--crisp-off-white);
+        }
+
+        .interactions-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .interactions-content { flex: 1; min-width: 300px; }
+
+        .interactions-content h2 { font-size: 2.25rem; margin-bottom: 1rem; }
+
+        .interactions-content p { color: var(--muted-slate); line-height: 1.8; margin-bottom: 2rem; }
+
+        .interaction-list { display: flex; flex-direction: column; gap: 1rem; }
+
+        .interaction-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: white;
+            border: 1px solid var(--light-border);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+        }
+
+        .interaction-emoji { font-size: 1.4rem; flex-shrink: 0; }
+
+        .interaction-item h4 { color: var(--deep-slate); font-size: 0.95rem; margin: 0 0 0.2rem; }
+        .interaction-item p { color: var(--muted-slate); font-size: 0.85rem; margin: 0; line-height: 1.5; }
+
+        .interactions-visual {
+            flex: 0 0 300px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Mini article card preview */
+        .article-preview {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            width: 280px;
+            border: 1px solid var(--light-border);
+        }
+
+        .article-preview-img {
+            height: 120px;
+            background: linear-gradient(135deg, #E2E8F0, #CBD5E1);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted-slate);
+            font-size: 0.75rem;
+        }
+
+        .article-preview-cat {
+            color: var(--electric-teal);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.4rem;
+        }
+
+        .article-preview h3 {
+            font-size: 0.95rem;
+            color: var(--deep-slate);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .article-preview-source {
+            font-size: 0.75rem;
+            color: var(--muted-slate);
+            margin-bottom: 1rem;
+        }
+
+        .article-actions-row {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 1rem;
+            border-top: 1px solid var(--light-border);
+        }
+
+        .article-action {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            cursor: default;
+        }
+
+        .action-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .action-icon.like { background: #FEE2E2; }
+        .action-icon.dislike { background: #F1F5F9; }
+        .action-icon.save { background: #FFF7ED; }
+        .action-icon.share { background: var(--teal-light); }
+        .article-action span { font-size: 0.6rem; color: var(--muted-slate); font-weight: 500; }
+
+        /* ---- Publishers Section ---- */
+        .publishers {
+            padding: 5rem 5%;
+            background: white;
+            text-align: center;
+        }
+
+        .publishers-inner { max-width: 900px; margin: 0 auto; }
+
+        .publishers h2 { font-size: 2.25rem; margin-bottom: 1rem; }
+
+        .publishers-subtitle { color: var(--muted-slate); font-size: 1.05rem; max-width: 600px; margin: 0 auto 3rem; }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .trust-badge {
+            background: var(--crisp-off-white);
+            border: 1px solid var(--light-border);
+            border-radius: 10px;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--deep-slate);
+        }
+
+        .trust-badge .badge-check {
+            width: 20px;
+            height: 20px;
+            background: var(--electric-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        /* ---- Categories ---- */
+        .categories {
+            padding: 5rem 5%;
+            background: var(--crisp-off-white);
+        }
+
+        .categories-inner { max-width: 1100px; margin: 0 auto; }
+
+        .categories-header { text-align: center; margin-bottom: 3rem; }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .category-item {
+            background: white;
+            border: 1px solid var(--light-border);
+            border-radius: 12px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            transition: all 0.2s;
+            cursor: default;
+        }
+
+        .category-item:hover {
+            border-color: var(--electric-teal);
+            box-shadow: 0 4px 16px rgba(20,184,166,0.1);
+        }
+
+        .category-item:hover .cat-emoji-wrap {
+            background: var(--teal-light);
+        }
+
+        .cat-emoji-wrap {
+            width: 48px;
+            height: 48px;
+            background: var(--crisp-off-white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 0.75rem;
+            transition: background 0.2s;
+        }
+
+        .category-item h4 { font-size: 0.85rem; color: var(--deep-slate); margin: 0; }
+
+        /* ---- CTA Section ---- */
+        .cta-section {
+            background: linear-gradient(135deg, var(--electric-teal) 0%, #0891B2 100%);
+            padding: 6rem 5%;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--pure-white);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.1rem;
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .cta-stores {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--pure-white);
+            color: var(--deep-slate);
+            padding: 0.85rem 1.75rem;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+        }
+
+        .cta-store-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            color: var(--deep-slate);
+        }
+
+        .cta-store-btn .s-icon { font-size: 1.4rem; }
+        .cta-store-btn .s-text small { display: block; font-size: 0.65rem; color: var(--muted-slate); }
+        .cta-store-btn .s-text strong { display: block; font-size: 0.9rem; }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 960px) {
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .categories-grid { grid-template-columns: repeat(3, 1fr); }
+            .ai-visual { flex: 1 1 100%; order: -1; }
+            .ai-stats { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero-visual { display: none; }
+            .ai-stats { grid-template-columns: 1fr 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .categories-grid { grid-template-columns: repeat(2, 1fr); }
+            .ai-content h2 { font-size: 1.9rem; }
+            .interactions-visual { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .categories-grid { grid-template-columns: repeat(2, 1fr); }
+            .ai-stats { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="/" class="logo">Apli<span class="logo-accent">tiq</span></a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/aplinews/" class="active">ApliNews</a>
+            <a href="/contact/">Contact</a>
+            <a href="/aplinews/" class="nav-cta">Download App</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>★</span> An Aplitiq Platform
+                </div>
+                <h1>Apli<span>News</span></h1>
+                <p class="hero-tagline">Your World. Curated by AI.</p>
+                <p class="hero-description">
+                    ApliNews is the intelligent news aggregator that learns what matters to you.
+                    Powered by Aplitiq's proprietary AI, it filters the noise and delivers
+                    personalized, high-quality news from trusted publishers — fast, smart,
+                    and beautifully simple.
+                </p>
+                <div class="hero-actions">
+                    <a href="#download" class="store-btn">
+                        <span class="store-btn-icon">&#xF8FF;</span>
+                        <span class="store-btn-text">
+                            <small>Download on the</small>
+                            <strong>App Store</strong>
+                        </span>
+                    </a>
+                    <a href="#download" class="store-btn">
+                        <span class="store-btn-icon">&#9654;</span>
+                        <span class="store-btn-text">
+                            <small>Get it on</small>
+                            <strong>Google Play</strong>
+                        </span>
+                    </a>
+                </div>
+                <div class="platform-row">
+                    <span class="platform-pill"><span>&#128247;</span> iOS &amp; Android</span>
+                    <span class="platform-pill"><span>&#9889;</span> Built with Flutter</span>
+                    <span class="platform-pill"><span>&#129302;</span> AI-Powered</span>
+                </div>
+            </div>
+
+            <!-- CSS Phone Mockup -->
+            <div class="hero-visual">
+                <div class="phone-wrap">
+                    <div class="phone-glow"></div>
+                    <div class="phone">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="app-header">
+                                <span class="app-header-logo">ApliNews</span>
+                                <div class="app-header-icon"></div>
+                            </div>
+                            <div class="app-categories">
+                                <span class="cat-chip active">For You</span>
+                                <span class="cat-chip">Tech</span>
+                                <span class="cat-chip">World</span>
+                                <span class="cat-chip">Sports</span>
+                            </div>
+                            <div class="news-feed">
+                                <!-- News card 1 -->
+                                <div class="news-card">
+                                    <div class="news-card-top">
+                                        <div class="news-thumb" style="background: linear-gradient(135deg,#DBEAFE,#BFDBFE);"></div>
+                                        <div>
+                                            <div class="news-card-cat">Technology</div>
+                                            <div class="news-card-title">AI transforms how we consume global information</div>
+                                            <div class="news-card-meta">Reuters · 2h ago</div>
+                                        </div>
+                                    </div>
+                                    <div class="news-card-actions">
+                                        <div class="action-dot liked">&#10084;</div>
+                                        <div class="action-dot">&#128065;</div>
+                                        <div class="action-dot">&#128276;</div>
+                                        <div class="action-dot">&#128276;</div>
+                                    </div>
+                                </div>
+                                <!-- News card 2 -->
+                                <div class="news-card">
+                                    <div class="news-card-top">
+                                        <div class="news-thumb" style="background: linear-gradient(135deg,#D1FAE5,#A7F3D0);"></div>
+                                        <div>
+                                            <div class="news-card-cat">Science</div>
+                                            <div class="news-card-title">New discovery reshapes understanding of the universe</div>
+                                            <div class="news-card-meta">BBC Science · 4h ago</div>
+                                        </div>
+                                    </div>
+                                    <div class="news-card-actions">
+                                        <div class="action-dot">&#10084;</div>
+                                        <div class="action-dot">&#128065;</div>
+                                        <div class="action-dot">&#128276;</div>
+                                        <div class="action-dot">&#128276;</div>
+                                    </div>
+                                </div>
+                                <!-- News card 3 -->
+                                <div class="news-card">
+                                    <div class="news-card-top">
+                                        <div class="news-thumb" style="background: linear-gradient(135deg,#FEE2E2,#FECACA);"></div>
+                                        <div>
+                                            <div class="news-card-cat">Business</div>
+                                            <div class="news-card-title">Markets reach new highs amid positive outlook</div>
+                                            <div class="news-card-meta">Financial Times · 6h ago</div>
+                                        </div>
+                                    </div>
+                                    <div class="news-card-actions">
+                                        <div class="action-dot">&#10084;</div>
+                                        <div class="action-dot">&#128065;</div>
+                                        <div class="action-dot">&#128276;</div>
+                                        <div class="action-dot">&#128276;</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section class="features">
+        <div class="features-inner">
+            <div class="features-header">
+                <div class="section-eyebrow">Why ApliNews</div>
+                <h2 class="section-title">Everything you need. Nothing you don't.</h2>
+                <p class="section-subtitle" style="margin: 0 auto; color: var(--muted-slate);">
+                    ApliNews was engineered from the ground up to deliver the fastest, smartest, and most personal news experience on mobile.
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">&#129302;</div>
+                    <h3>AI Personalization</h3>
+                    <p>Our algorithms learn your reading patterns and interests over time, automatically refining your feed to surface news that genuinely matters to you — and filtering out the rest.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#9989;</div>
+                    <h3>Trusted Publishers Only</h3>
+                    <p>Every news source in ApliNews is verified for credibility and quality. We curate only established publishers so you always receive accurate, reliable journalism.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128276;</div>
+                    <h3>Smart Notifications</h3>
+                    <p>Stay informed without being overwhelmed. ApliNews sends timely, relevant alerts on breaking stories that match your interests — no spam, no noise.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#9889;</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Built with Flutter for true native performance on both iOS and Android. ApliNews loads instantly, scrolls smoothly, and works flawlessly everywhere.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128218;</div>
+                    <h3>History &amp; Profile</h3>
+                    <p>Revisit any article you've read in your history, manage your reading preferences, and customise your profile to get an even more tailored news experience.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#127758;</div>
+                    <h3>Rich Categories</h3>
+                    <p>From technology and science to sports, business, culture, and beyond — explore a wide range of categories, all organised and easily searchable in one place.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Deep Dive -->
+    <section class="ai-section">
+        <div class="ai-inner">
+            <div class="ai-content">
+                <div class="section-eyebrow">Powered by Aplitiq AI</div>
+                <h2>Intelligence that works for you.</h2>
+                <p>
+                    At the heart of ApliNews is Aplitiq's proprietary machine learning engine. Unlike simple keyword filters,
+                    our AI understands context, topic relevance, source credibility, and your evolving reading behaviour.
+                    Every like, dislike, save, and reading session makes your experience smarter.
+                </p>
+                <div class="ai-stats">
+                    <div class="ai-stat">
+                        <span class="ai-stat-number">100%</span>
+                        <span class="ai-stat-label">Personalised feed</span>
+                    </div>
+                    <div class="ai-stat">
+                        <span class="ai-stat-number">Real-time</span>
+                        <span class="ai-stat-label">Content refresh</span>
+                    </div>
+                    <div class="ai-stat">
+                        <span class="ai-stat-number">Zero</span>
+                        <span class="ai-stat-label">Unverified sources</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ai-visual">
+                <div class="ai-card">
+                    <div class="ai-card-icon">&#127919;</div>
+                    <div>
+                        <h4>Relevance Scoring</h4>
+                        <p>Every article is scored for personal relevance before reaching your feed, so what you see always matches your interests.</p>
+                    </div>
+                </div>
+                <div class="ai-card">
+                    <div class="ai-card-icon">&#128065;</div>
+                    <div>
+                        <h4>Behavioural Learning</h4>
+                        <p>The more you read, the smarter ApliNews gets. Likes, dislikes, and reading time all inform the model.</p>
+                    </div>
+                </div>
+                <div class="ai-card">
+                    <div class="ai-card-icon">&#128273;</div>
+                    <div>
+                        <h4>Credibility Filter</h4>
+                        <p>AI-assisted source verification ensures only trusted, high-quality publishers reach the platform.</p>
+                    </div>
+                </div>
+                <div class="ai-card">
+                    <div class="ai-card-icon">&#128200;</div>
+                    <div>
+                        <h4>Trend Awareness</h4>
+                        <p>Stay ahead with real-time trending detection that surfaces important stories exactly when they break.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Interactions -->
+    <section class="interactions">
+        <div class="interactions-inner">
+            <div class="interactions-content">
+                <div class="section-eyebrow">Article Interactions</div>
+                <h2>Engage with every story.</h2>
+                <p>
+                    ApliNews isn't just a passive reading experience. Every article comes with a set of powerful interaction tools
+                    that let you engage, curate, and share the news that matters most to you. Your interactions also continuously
+                    train the AI to improve your personalised feed.
+                </p>
+                <div class="interaction-list">
+                    <div class="interaction-item">
+                        <span class="interaction-emoji">&#10084;&#65039;</span>
+                        <div>
+                            <h4>Like</h4>
+                            <p>Signal that an article is relevant — the AI delivers more of what you love.</p>
+                        </div>
+                    </div>
+                    <div class="interaction-item">
+                        <span class="interaction-emoji">&#128078;</span>
+                        <div>
+                            <h4>Dislike</h4>
+                            <p>Push away content you don't want to see. The feed learns your preferences instantly.</p>
+                        </div>
+                    </div>
+                    <div class="interaction-item">
+                        <span class="interaction-emoji">&#128279;</span>
+                        <div>
+                            <h4>Share</h4>
+                            <p>Share any article to your favourite apps or contacts in just one tap.</p>
+                        </div>
+                    </div>
+                    <div class="interaction-item">
+                        <span class="interaction-emoji">&#128278;</span>
+                        <div>
+                            <h4>Save</h4>
+                            <p>Bookmark articles to your saved collection and read them at any time, anywhere.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="interactions-visual">
+                <div class="article-preview">
+                    <div class="article-preview-img">
+                        <span>Article Image</span>
+                    </div>
+                    <div class="article-preview-cat">Technology</div>
+                    <h3>The Future of AI in Everyday Life</h3>
+                    <div class="article-preview-source">The Guardian &nbsp;·&nbsp; 3 min read &nbsp;·&nbsp; 1h ago</div>
+                    <div class="article-actions-row">
+                        <div class="article-action">
+                            <div class="action-icon like">&#10084;</div>
+                            <span>Like</span>
+                        </div>
+                        <div class="article-action">
+                            <div class="action-icon dislike">&#128078;</div>
+                            <span>Dislike</span>
+                        </div>
+                        <div class="article-action">
+                            <div class="action-icon save">&#128278;</div>
+                            <span>Save</span>
+                        </div>
+                        <div class="article-action">
+                            <div class="action-icon share">&#128279;</div>
+                            <span>Share</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted Publishers -->
+    <section class="publishers">
+        <div class="publishers-inner">
+            <div class="section-eyebrow">Trusted Sources</div>
+            <h2 class="section-title">Only the most reliable publishers.</h2>
+            <p class="publishers-subtitle">
+                ApliNews partners exclusively with verified, reputable news publishers. Our editorial team and AI work together
+                to ensure every source meets our standards for accuracy, credibility, and journalistic integrity.
+            </p>
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <div class="badge-check">&#10003;</div>
+                    Verified Publishers
+                </div>
+                <div class="trust-badge">
+                    <div class="badge-check">&#10003;</div>
+                    Editorial Standards
+                </div>
+                <div class="trust-badge">
+                    <div class="badge-check">&#10003;</div>
+                    No Misinformation
+                </div>
+                <div class="trust-badge">
+                    <div class="badge-check">&#10003;</div>
+                    Diverse Perspectives
+                </div>
+                <div class="trust-badge">
+                    <div class="badge-check">&#10003;</div>
+                    Regular Audits
+                </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--muted-slate);">
+                Are you a publisher? Learn about our <a href="/publisher-disclaimer/" style="color: var(--electric-teal); font-weight: 600;">publisher standards and disclaimer &rarr;</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="categories-inner">
+            <div class="categories-header centered">
+                <div class="section-eyebrow">News Categories</div>
+                <h2 class="section-title">Every topic that matters to you.</h2>
+                <p class="section-subtitle" style="margin: 0 auto; color: var(--muted-slate);">
+                    Explore a wide range of news categories, or let the AI curate a personalised &ldquo;For You&rdquo; feed across all of them.
+                </p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-item">
+                    <div class="cat-emoji-wrap">&#128187;</div>
+                    <h4>Technology</h4>
+                </div>
+                <div class="category-item">
+                    <div class="cat-emoji-wrap">&#127775;</div>
+                    <h4>Science</h4>
+                </div>
+                <div class="category-item">
+                    <div class="cat-emoji-wrap">&#128202;</div>
+                    <h4>Business</h4>
+                </div>
+                <div class="category-item">
+                    <div class="cat-emoji-wrap">&#127758;</div>
+                    <h4>World News</h4>
+                </div>
+                <div class="category-item">
+                    <div class="cat-emoji-wrap">&#127944;</div>
+                    <h4>Sports</h4>
+                </div>
+                <div class="category-item">
+                    <div class="cat-emoji-wrap">&#127917;</div>
+                    <h4>Entertainment</h4>
+                </div>
+                <div class="category-item">
+                    <div class="cat-emoji-wrap">&#127973;</div>
+                    <h4>Health</h4>
+                </div>
+                <div class="category-item">
+                    <div class="cat-emoji-wrap">&#127981;</div>
+                    <h4>Politics</h4>
+                </div>
+                <div class="category-item">
+                    <div class="cat-emoji-wrap">&#127758;</div>
+                    <h4>Environment</h4>
+                </div>
+                <div class="category-item">
+                    <div class="cat-emoji-wrap">&#127752;</div>
+                    <h4>Travel</h4>
+                </div>
+                <div class="category-item">
+                    <div class="cat-emoji-wrap">&#127789;</div>
+                    <h4>Food &amp; Lifestyle</h4>
+                </div>
+                <div class="category-item">
+                    <div class="cat-emoji-wrap">&#127917;</div>
+                    <h4>Arts &amp; Culture</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA -->
+    <section class="cta-section" id="download">
+        <div class="section-eyebrow" style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">Available Now</div>
+        <h2>Start reading smarter today.</h2>
+        <p>Download ApliNews for free on iOS and Android. No ads, no clutter — just the news that matters to you.</p>
+        <div class="cta-stores">
+            <a href="#" class="cta-store-btn">
+                <span class="s-icon">&#xF8FF;</span>
+                <span class="s-text">
+                    <small>Download on the</small>
+                    <strong>App Store</strong>
+                </span>
+            </a>
+            <a href="#" class="cta-store-btn">
+                <span class="s-icon">&#9654;</span>
+                <span class="s-text">
+                    <small>Get it on</small>
+                    <strong>Google Play</strong>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand-col">
+                <a href="/" class="footer-logo">Aplitiq</a>
+                <p>Architecting simple intelligence. Aplitiq Ltd is a cross-platform technology firm building AI-driven software for a global audience.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Products</h4>
+                <a href="/aplinews/">ApliNews</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="/privacy-policy/">Privacy Policy</a>
+                <a href="/user-agreement/">User Agreement</a>
+                <a href="/publisher-disclaimer/">Publisher Disclaimer</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="/">About Aplitiq</a>
+                <a href="/contact/">Contact Us</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span class="footer-bottom-left">&copy; 2026 Aplitiq Ltd. All rights reserved. Registered in the United Kingdom.</span>
+            <span class="footer-bottom-right">
+                <a href="/privacy-policy/" style="color: var(--muted-slate); margin-right: 1rem;">Privacy</a>
+                <a href="/user-agreement/" style="color: var(--muted-slate);">Terms</a>
+            </span>
+        </div>
+    </footer>
+
+</body>
+</html>

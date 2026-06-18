@@ -1,0 +1,34 @@
+[build]
+  publish = "."
+
+# Short URL aliases for legal pages
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy-policy/"
+  status = 301
+
+[[redirects]]
+  from = "/terms"
+  to = "/user-agreement/"
+  status = 301
+
+[[redirects]]
+  from = "/user-terms"
+  to = "/user-agreement/"
+  status = 301
+
+[[redirects]]
+  from = "/disclaimer"
+  to = "/publisher-disclaimer/"
+  status = 301
+
+[[redirects]]
+  from = "/publishers"
+  to = "/publisher-disclaimer/"
+  status = 301
+
+# ApliNews short alias
+[[redirects]]
+  from = "/app"
+  to = "/aplinews/"
+  status = 301

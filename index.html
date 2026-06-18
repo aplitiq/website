@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplitiq Ltd | Simple Intelligence</title>
+    <style>
+        /* Global Styles & Variables */
+        :root {
+            --deep-slate: #0F172A;
+            --electric-teal: #14B8A6;
+            --crisp-off-white: #F8FAFC;
+            --pure-white: #FFFFFF;
+            --ink-black: #020617;
+            --muted-slate: #64748B;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--crisp-off-white);
+            color: var(--ink-black);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: var(--deep-slate);
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        /* 1. Header / Navigation */
+        .navbar {
+            background-color: var(--deep-slate);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--pure-white);
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a {
+            color: var(--pure-white);
+            margin-left: 2rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--electric-teal);
+        }
+
+        .nav-links .nav-cta {
+            background-color: var(--electric-teal);
+            padding: 0.45rem 1.1rem;
+            border-radius: 4px;
+        }
+
+        .nav-links .nav-cta:hover {
+            background-color: #0F9788;
+            color: var(--pure-white);
+        }
+
+        /* 2. Hero Section */
+        .hero {
+            background-color: var(--deep-slate);
+            color: var(--pure-white);
+            text-align: center;
+            padding: 6rem 5%;
+        }
+
+        .hero h1 {
+            color: var(--pure-white);
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
+            color: #E2E8F0; /* Slightly muted white for readability */
+        }
+
+        .cta-btn {
+            background-color: var(--electric-teal);
+            color: var(--pure-white);
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background-color: #0F9788; /* Slightly darker teal on hover */
+        }
+
+        /* 3. About The Lab */
+        .about {
+            padding: 5rem 5%;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about h2 {
+            font-size: 2.2rem;
+        }
+
+        /* 4. Core Competencies */
+        .competencies {
+            padding: 4rem 5%;
+            background-color: var(--crisp-off-white);
+            text-align: center;
+        }
+
+        .competencies h2 {
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: var(--pure-white);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+
+        .card-icon {
+            color: var(--electric-teal);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* 5. Featured Product */
+        .product-spotlight {
+            padding: 5rem 5%;
+        }
+
+        .product-container {
+            background-color: var(--pure-white);
+            border-radius: 12px;
+            display: flex;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            flex-wrap: wrap;
+        }
+
+        .product-visual {
+            flex: 1;
+            min-width: 300px;
+            background-color: #E2E8F0; /* Placeholder for image */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            color: var(--muted-slate);
+        }
+
+        .product-copy {
+            flex: 1;
+            padding: 4rem;
+            min-width: 300px;
+        }
+
+        .eyebrow {
+            color: var(--electric-teal);
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .product-copy h2 {
+            font-size: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        .product-link {
+            color: var(--electric-teal);
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 1.5rem;
+        }
+
+        /* 6. Footer */
+        .footer {
+            background-color: var(--deep-slate);
+            color: var(--muted-slate);
+            text-align: center;
+            padding: 3rem 5%;
+        }
+
+        .footer-brand {
+            color: var(--pure-white);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--muted-slate);
+            margin: 0 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--pure-white);
+        }
+
+        .footer-legal {
+            font-size: 0.9rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 1rem; }
+            .nav-links a { margin: 0 1rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .product-copy { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Header / Navigation -->
+    <nav class="navbar">
+        <div class="logo">Aplitiq</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#expertise">Expertise</a>
+            <a href="#products">Products</a>
+            <a href="/aplinews/">ApliNews</a>
+            <a href="/contact/">Contact</a>
+            <a href="/aplinews/" class="nav-cta">Download App</a>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section -->
+    <header class="hero">
+        <h1>Architecting Simple Intelligence.</h1>
+        <p>We engineer the future of data. Aplitiq is a cross-platform technology firm specializing in proprietary AI-driven software and intelligent architectures. We design, build, and scale high-performance digital platforms across mobile, web, and desktop environments for a global user base.</p>
+        <a href="#work" class="cta-btn">Discover Our Architecture</a>
+    </header>
+
+    <!-- 3. About The Lab -->
+    <section id="about" class="about">
+        <h2>The Core of Aplitiq</h2>
+        <p>As the parent architectural lab, Aplitiq Ltd plays the long-term game. We operate at the intersection of raw data and human experience, transforming complex information into seamless, intuitive interactions. By leveraging advanced frameworks and proprietary AI algorithms, we manage a unified ecosystem of cross-platform applications. Our philosophy is rooted in professional, precise, and trustworthy engineering—building intelligent solutions that operate quietly and powerfully in the background.</p>
+    </section>
+
+    <!-- 4. Core Competencies / Expertise -->
+    <section id="expertise" class="competencies">
+        <h2>Our Engineering Expertise</h2>
+        <div class="cards-container">
+            
+            <div class="card">
+                <div class="card-icon">⎔</div>
+                <h3>Intelligent Data Processing</h3>
+                <p>Powering platforms with proprietary AI and robust cloud architectures. We build systems that process, analyze, and deploy data with uncompromising speed and accuracy.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">❖</div>
+                <h3>Cross-Platform Ecosystems</h3>
+                <p>Delivering seamless, native-feeling experiences. Our software is architected to perform flawlessly across mobile, web, and desktop environments from a single, scalable foundation.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">◲</div>
+                <h3>Precision UI/UX Engineering</h3>
+                <p>Translating complex technical capabilities into intuitive, frictionless user journeys. We believe true technological power lies in absolute simplicity for the end user.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. Featured Product Spotlight -->
+    <section id="products" class="product-spotlight">
+        <div class="product-container">
+            <div class="product-visual">
+                <p>[ Placeholder: ApliNews Device Mockup ]</p>
+            </div>
+            <div class="product-copy">
+                <div class="eyebrow">An Aplitiq Platform</div>
+                <h2>ApliNews: Intelligence, Curated.</h2>
+                <p>Experience the pinnacle of our intelligent data processing. ApliNews is our flagship consumer product—a deeply personalized AI news aggregator engineered to filter out global noise. By utilizing Aplitiq’s proprietary machine learning algorithms, ApliNews automates content discovery, delivering premium, highly relevant insights directly to users across all devices. It is the perfect demonstration of our mission: turning infinite data into simple intelligence.</p>
+                <a href="/aplinews/" class="product-link">Explore ApliNews →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Footer -->
+    <footer class="footer">
+        <div class="footer-brand">Aplitiq Ltd | Simple Intelligence.</div>
+        <div class="footer-links">
+            <a href="/aplinews/">ApliNews</a>
+            <a href="/privacy-policy/">Privacy Policy</a>
+            <a href="/user-agreement/">User Agreement</a>
+            <a href="/publisher-disclaimer/">Publisher Disclaimer</a>
+            <a href="/contact/">Contact</a>
+        </div>
+        <div class="footer-legal">
+            © 2026 Aplitiq Ltd. All rights reserved. Registered in the United Kingdom.
+        </div>
+    </footer>
+
+</body>
+</html>
