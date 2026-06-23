@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Your ApliNews Account & Data — Aplitiq</title>
+    <meta name="description" content="Request deletion of your anonymous ApliNews account and all associated cloud data using your Anonymous ID.">
+    <link rel="stylesheet" href="css/shared.css">
+    <style>
+        .legal-hero {
+            padding: 4rem 5% 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .delete-body {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            padding: 0 5%;
+        }
+
+        .delete-form-card {
+            background: var(--pure-white);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 28px;
+            box-shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+            padding: 2.25rem;
+            margin-top: 2rem;
+        }
+
+        .delete-form-card p {
+            margin: 1rem 0;
+            color: var(--deep-slate);
+            line-height: 1.75;
+        }
+
+        .delete-form-card label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.65rem;
+            color: var(--deep-slate);
+        }
+
+        .delete-form-card input[type="text"] {
+            width: 100%;
+            padding: 1rem 1.1rem;
+            border-radius: 14px;
+            border: 1px solid #CBD5E1;
+            background: #F8FAFC;
+            font-size: 1rem;
+            color: var(--deep-slate);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .delete-form-card input[type="text"]:focus {
+            outline: none;
+            border-color: var(--electric-teal);
+            box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.12);
+        }
+
+        .delete-form-card .checkbox-row {
+            display: flex;
+            gap: 0.9rem;
+            align-items: flex-start;
+            margin: 1.3rem 0 1rem;
+        }
+
+        .delete-form-card .checkbox-row input {
+            margin-top: 0.2rem;
+            width: 1.15rem;
+            height: 1.15rem;
+        }
+
+        .delete-form-card .checkbox-row label {
+            margin: 0;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .delete-form-card .form-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .delete-form-card .hint {
+            color: var(--muted-slate);
+            font-size: 0.95rem;
+        }
+
+        .delete-form-card .message {
+            border-radius: 18px;
+            padding: 1rem 1.2rem;
+            margin-top: 1.5rem;
+            font-weight: 600;
+        }
+
+        .message.success {
+            background: #ECFDF5;
+            border: 1px solid #6EE7B7;
+            color: #064E3B;
+        }
+
+        .message.error {
+            background: #FEF2F2;
+            border: 1px solid #FCA5A5;
+            color: #991B1B;
+        }
+
+        .delete-form-card .fallback-line {
+            margin-top: 1.75rem;
+            color: var(--muted-slate);
+            font-size: 0.96rem;
+        }
+
+        .delete-form-card .fallback-line a {
+            color: var(--electric-teal);
+        }
+
+        .page-footer {
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 680px) {
+            .delete-form-card {
+                padding: 1.5rem;
+            }
+
+            .legal-hero {
+                padding: 3rem 5% 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="./" class="logo">Apli<span class="logo-accent">tiq</span></a>
+        <div class="nav-links">
+            <a href="./">Home</a>
+            <a href="./aplinews/">ApliNews</a>
+            <a href="./contact/">Contact</a>
+        </div>
+    </nav>
+
+    <div class="legal-hero">
+        <div class="section-eyebrow">ApliNews</div>
+        <h1>Delete Your ApliNews Account &amp; Data</h1>
+        <p>Use your anonymous ApliNews ID to request permanent deletion of your account and associated cloud data from our servers.</p>
+    </div>
+
+    <div class="delete-body">
+        <div class="delete-form-card">
+            <p>ApliNews uses anonymous accounts — you never created a username or password. Your account is identified only by an Anonymous ID, which you can find inside the app under Settings. If you used ApliNews as an anonymous guest user, enter your Anonymous ID below to permanently delete your account and all associated data (reading history, bookmarks, preferences) from our servers. This action cannot be undone.</p>
+
+            <div id="statusMessage" class="message" hidden aria-live="polite"></div>
+
+            <form id="deleteForm" novalidate>
+                <label for="anonymousId">Anonymous ID</label>
+                <input id="anonymousId" name="anonymousId" type="text" autocomplete="off" placeholder="Enter your Anonymous ID" aria-describedby="anonymous-help" required>
+                <div class="checkbox-row">
+                    <input id="confirmPermanent" type="checkbox" />
+                    <label for="confirmPermanent">I understand this is permanent.</label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="submitButton" disabled>Delete My Data</button>
+                    <span class="hint">You must enter a valid Anonymous ID and confirm this action before submitting.</span>
+                </div>
+            </form>
+
+            <p class="fallback-line">If you no longer have access to the app and cannot retrieve your Anonymous ID, contact us at <a href="mailto:aplinews-contact@aplitiq.com">aplinews-contact@aplitiq.com</a> with your device make/model and approximate installation date, and we will locate and delete your data manually.</p>
+        </div>
+    </div>
+
+    <footer class="footer page-footer">
+        <div class="footer-brand">Aplitiq Ltd | Simple Intelligence.</div>
+        <div class="footer-links">
+            <a href="./aplinews/">ApliNews</a>
+            <a href="./privacy-policy/">Privacy Policy</a>
+            <a href="./user-agreement/">User Agreement</a>
+            <a href="./publisher-disclaimer/">Publisher Disclaimer</a>
+            <a href="./contact/">Contact</a>
+        </div>
+        <div class="footer-legal">© 2026 Aplitiq Ltd. All rights reserved. Registered in the United Kingdom.</div>
+    </footer>
+
+    <script>
+        const FUNCTION_URL = "https://europe-west1-aplinews.cloudfunctions.net/deleteUserData";
+        const form = document.getElementById('deleteForm');
+        const input = document.getElementById('anonymousId');
+        const checkbox = document.getElementById('confirmPermanent');
+        const button = document.getElementById('submitButton');
+        const statusMessage = document.getElementById('statusMessage');
+        const supportEmail = 'aplinews-contact@aplitiq.com';
+
+        const uidPattern = /^[A-Za-z0-9]{20,36}$/;
+
+        function updateButtonState() {
+            const value = input.value.trim();
+            const isValidUid = uidPattern.test(value);
+            button.disabled = !(isValidUid && checkbox.checked);
+        }
+
+        function showStatus(message, type) {
+            statusMessage.textContent = message;
+            statusMessage.className = 'message ' + type;
+            statusMessage.hidden = false;
+        }
+
+        input.addEventListener('input', updateButtonState);
+        checkbox.addEventListener('change', updateButtonState);
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            statusMessage.hidden = true;
+
+            const uid = input.value.trim();
+            if (!uid) {
+                showStatus('Please enter your Anonymous ID.', 'error');
+                return;
+            }
+            if (!uidPattern.test(uid)) {
+                showStatus('Please enter a valid Anonymous ID (20–36 alphanumeric characters).', 'error');
+                return;
+            }
+
+            button.disabled = true;
+            button.textContent = 'Deleting…';
+
+            try {
+                const response = await fetch(FUNCTION_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ uid })
+                });
+
+                if (response.ok) {
+                    showStatus('Your data has been deleted.', 'success');
+                    form.style.display = 'none';
+                } else {
+                    console.error('Delete request failed:', response.status);
+                    showStatus(`We couldn't process this request. Please check your Anonymous ID or contact ${supportEmail}.`, 'error');
+                }
+            } catch (error) {
+                console.error('Delete request error:', error);
+                showStatus(`We couldn't process this request. Please check your Anonymous ID or contact ${supportEmail}.`, 'error');
+            } finally {
+                if (!statusMessage.classList.contains('success')) {
+                    button.textContent = 'Delete My Data';
+                    updateButtonState();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
