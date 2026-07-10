@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.aplitiq.aplinews",
+      "sha256_cert_fingerprints": [
+        "B0:B3:F7:38:1B:F9:7F:4B:2B:DB:1D:D1:2D:F6:44:9C:BE:82:EE:F6:4F:F5:A6:32:27:67:27:1B:AB:76:33:91",
+        "E8:96:E4:6C:92:CF:FE:41:88:44:3C:AB:68:06:FA:E2:D0:7C:E5:B9:5F:30:35:D7:52:E5:63:8B:20:19:FA:DC"
+      ]
+    }
+  }
+]
