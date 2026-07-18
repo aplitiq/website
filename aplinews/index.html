@@ -154,6 +154,16 @@
             height: calc(100% - 22px);
             overflow: hidden;
             padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .app-header {
@@ -783,69 +793,7 @@
                     <div class="phone">
                         <div class="phone-notch"></div>
                         <div class="phone-screen">
-                            <div class="app-header">
-                                <span class="app-header-logo">ApliNews</span>
-                                <div class="app-header-icon"></div>
-                            </div>
-                            <div class="app-categories">
-                                <span class="cat-chip active">For You</span>
-                                <span class="cat-chip">Tech</span>
-                                <span class="cat-chip">World</span>
-                                <span class="cat-chip">Sports</span>
-                            </div>
-                            <div class="news-feed">
-                                <!-- News card 1 -->
-                                <div class="news-card">
-                                    <div class="news-card-top">
-                                        <img class="news-thumb" src="../images/maroc-portrait-screenshoot-1.png" alt="Morocco news screenshot" style="width: 45px; height: 40px; border-radius: 5px; object-fit: cover;"></div>
-                                        <div>
-                                            <div class="news-card-cat">Technology</div>
-                                            <div class="news-card-title">AI transforms how we consume global information</div>
-                                            <div class="news-card-meta">Reuters · 2h ago</div>
-                                        </div>
-                                    </div>
-                                    <div class="news-card-actions">
-                                        <div class="action-dot liked">&#10084;</div>
-                                        <div class="action-dot">&#128065;</div>
-                                        <div class="action-dot">&#128276;</div>
-                                        <div class="action-dot">&#128276;</div>
-                                    </div>
-                                </div>
-                                <!-- News card 2 -->
-                                <div class="news-card">
-                                    <div class="news-card-top">
-                                        <div class="news-thumb" style="background: linear-gradient(135deg,#D1FAE5,#A7F3D0);"></div>
-                                        <div>
-                                            <div class="news-card-cat">Science</div>
-                                            <div class="news-card-title">New discovery reshapes understanding of the universe</div>
-                                            <div class="news-card-meta">BBC Science · 4h ago</div>
-                                        </div>
-                                    </div>
-                                    <div class="news-card-actions">
-                                        <div class="action-dot">&#10084;</div>
-                                        <div class="action-dot">&#128065;</div>
-                                        <div class="action-dot">&#128276;</div>
-                                        <div class="action-dot">&#128276;</div>
-                                    </div>
-                                </div>
-                                <!-- News card 3 -->
-                                <div class="news-card">
-                                    <div class="news-card-top">
-                                        <div class="news-thumb" style="background: linear-gradient(135deg,#FEE2E2,#FECACA);"></div>
-                                        <div>
-                                            <div class="news-card-cat">Business</div>
-                                            <div class="news-card-title">Markets reach new highs amid positive outlook</div>
-                                            <div class="news-card-meta">Financial Times · 6h ago</div>
-                                        </div>
-                                    </div>
-                                    <div class="news-card-actions">
-                                        <div class="action-dot">&#10084;</div>
-                                        <div class="action-dot">&#128065;</div>
-                                        <div class="action-dot">&#128276;</div>
-                                        <div class="action-dot">&#128276;</div>
-                                    </div>
-                                </div>
-                            </div>
+                            <img src="../images/maroc-portrait-screenshoot-1.png" alt="ApliNews Morocco app screenshot">
                         </div>
                     </div>
                 </div>
