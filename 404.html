@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0F172A">
+    <meta name="description" content="اكتشف الخبر داخل تطبيق ApliNews واحصل على تجربة أخبار ذكية ومخصصة.">
+    <meta property="og:title" content="ApliNews — أخبارك بذكاء">
+    <meta property="og:description" content="افتح هذا الخبر داخل تطبيق ApliNews لتجربة أخبار ذكية ومخصصة.">
+    <meta property="og:type" content="website">
+    <title>ApliNews — افتح الخبر في التطبيق</title>
+    <link rel="stylesheet" href="/css/shared.css">
+    <style>
+        :root {
+            --fallback-ink: #0F172A;
+            --fallback-muted: #64748B;
+            --fallback-line: rgba(148, 163, 184, 0.24);
+            --fallback-glow: rgba(20, 184, 166, 0.24);
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 88% 8%, rgba(20, 184, 166, 0.18), transparent 28rem),
+                linear-gradient(145deg, #F8FAFC 0%, #EEF5F5 52%, #E6F3F1 100%);
+        }
+
+        .fallback-shell {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fallback-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1180px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 1.25rem 5%;
+        }
+
+        .fallback-logo {
+            color: var(--fallback-ink);
+            font-size: 1.55rem;
+            font-weight: 800;
+            letter-spacing: 0.2px;
+        }
+
+        .fallback-logo span { color: var(--electric-teal); }
+
+        .header-link {
+            color: var(--fallback-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .header-link:hover { color: var(--teal-dark); }
+
+        .fallback-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            max-width: 1180px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem 5% 5rem;
+        }
+
+        .fallback-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+            align-items: center;
+            gap: clamp(2.5rem, 7vw, 7rem);
+        }
+
+        .fallback-copy { max-width: 620px; }
+
+        .fallback-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            color: var(--teal-dark);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            margin-bottom: 1.15rem;
+        }
+
+        .fallback-kicker::before {
+            content: '';
+            width: 2rem;
+            height: 2px;
+            background: var(--electric-teal);
+        }
+
+        .fallback-copy h1 {
+            color: var(--fallback-ink);
+            font-size: clamp(2.25rem, 5vw, 4.4rem);
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+            margin-bottom: 1.2rem;
+        }
+
+        .fallback-copy h1 span { color: var(--teal-dark); }
+
+        .fallback-lead {
+            max-width: 530px;
+            color: #475569;
+            font-size: clamp(1rem, 1.8vw, 1.18rem);
+            line-height: 1.9;
+            margin-bottom: 1.8rem;
+        }
+
+        .fallback-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .fallback-actions .btn {
+            min-height: 52px;
+            justify-content: center;
+            padding-inline: 1.35rem;
+        }
+
+        .play-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-height: 52px;
+            padding: 0.45rem 1.05rem 0.45rem 1.2rem;
+            border: 1px solid var(--fallback-line);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.72);
+            color: var(--fallback-ink);
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .play-button:hover {
+            color: var(--fallback-ink);
+            border-color: rgba(20, 184, 166, 0.65);
+            box-shadow: 0 10px 28px var(--fallback-glow);
+            transform: translateY(-2px);
+        }
+
+        .play-icon {
+            display: grid;
+            place-items: center;
+            width: 1.9rem;
+            height: 1.9rem;
+            border-radius: 50%;
+            background: var(--deep-slate);
+            color: var(--electric-teal);
+            font-size: 0.8rem;
+        }
+
+        .play-button small {
+            display: block;
+            color: var(--fallback-muted);
+            font-size: 0.65rem;
+            font-weight: 600;
+            line-height: 1.2;
+            text-align: right;
+        }
+
+        .play-button strong { display: block; font-size: 0.92rem; }
+
+        .fallback-note {
+            color: var(--fallback-muted);
+            font-size: 0.82rem;
+            margin: 0;
+        }
+
+        .fallback-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            isolation: isolate;
+        }
+
+        .fallback-visual::before {
+            content: '';
+            position: absolute;
+            inset: 10% -8% 4%;
+            z-index: -1;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--fallback-glow), transparent 68%);
+            filter: blur(8px);
+        }
+
+        .phone-card {
+            position: relative;
+            width: min(100%, 310px);
+            padding: 0.55rem;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 26px;
+            background: rgba(15, 23, 42, 0.94);
+            box-shadow: 0 26px 60px rgba(15, 23, 42, 0.24), 0 0 0 10px rgba(255, 255, 255, 0.35);
+            transform: rotate(2.5deg);
+        }
+
+        .phone-card img {
+            display: block;
+            width: 100%;
+            border-radius: 21px;
+        }
+
+        .visual-badge {
+            position: absolute;
+            right: -1.25rem;
+            bottom: 1.8rem;
+            max-width: 180px;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--fallback-ink);
+            font-size: 0.8rem;
+            font-weight: 700;
+            line-height: 1.5;
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
+            transform: rotate(-2.5deg);
+        }
+
+        .visual-badge span { color: var(--teal-dark); }
+
+        .fallback-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            max-width: 1180px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 1.25rem 5%;
+            border-top: 1px solid var(--fallback-line);
+            color: var(--fallback-muted);
+            font-size: 0.78rem;
+        }
+
+        .fallback-footer a { color: inherit; }
+        .fallback-footer a:hover { color: var(--teal-dark); }
+
+        .generic-404 { display: none; }
+        .is-generic .article-fallback { display: none; }
+        .is-generic .generic-404 { display: block; }
+
+        @media (max-width: 760px) {
+            .fallback-header { padding-top: 1rem; }
+            .header-link { font-size: 0.78rem; }
+            .fallback-main { align-items: flex-start; padding-top: 2.5rem; }
+            .fallback-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .fallback-copy { text-align: center; margin: 0 auto; }
+            .fallback-kicker { justify-content: center; }
+            .fallback-lead { margin-inline: auto; }
+            .fallback-actions { justify-content: center; }
+            .fallback-note { max-width: 340px; margin-inline: auto; }
+            .fallback-visual { order: -1; }
+            .phone-card { width: min(68vw, 260px); }
+            .visual-badge { right: -1rem; bottom: 1rem; }
+            .fallback-footer { flex-direction: column; text-align: center; align-items: center; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+            .phone-card, .visual-badge { transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fallback-shell">
+        <header class="fallback-header">
+            <a class="fallback-logo" href="/aplinews/" aria-label="ApliNews">Apli<span>News</span></a>
+            <a class="header-link" href="/">Aplitiq</a>
+        </header>
+
+        <main class="fallback-main">
+            <div class="fallback-grid">
+                <section class="article-fallback fallback-copy" aria-labelledby="article-title">
+                    <div class="fallback-kicker">ApliNews</div>
+                    <h1 id="article-title">هذا الخبر متوفر<br><span>على تطبيق ApliNews</span></h1>
+                    <p class="fallback-lead">افتح الخبر داخل التطبيق لتستمتع بقراءة أسرع، وتوصيات ذكية، وتجربة أخبار مصممة لك.</p>
+                    <div class="fallback-actions">
+                        <a id="open-in-app" class="btn btn-primary" href="/aplinews/article/" aria-label="فتح الخبر في تطبيق ApliNews">فتح في ApliNews <span aria-hidden="true">←</span></a>
+                        <a class="play-button" href="https://play.google.com/store/apps/details?id=com.aplitiq.aplinews" target="_blank" rel="noopener noreferrer" aria-label="تحميل ApliNews من Google Play">
+                            <span class="play-icon" aria-hidden="true">▶</span>
+                            <span><small>متوفر على</small><strong>Google Play</strong></span>
+                        </a>
+                    </div>
+                    <p class="fallback-note">إذا لم يفتح التطبيق مباشرة، حمّله من Google Play ثم أعد فتح الرابط.</p>
+                </section>
+
+                <div class="article-fallback fallback-visual" aria-label="لقطة من تطبيق ApliNews">
+                    <div class="phone-card">
+                        <img src="/images/maroc-portrait-screenshoot-1.png" alt="واجهة تطبيق ApliNews" width="720" height="1440">
+                    </div>
+                    <div class="visual-badge"><span>ذكاء يناسبك</span><br>أخبار موثوقة، في مكان واحد</div>
+                </div>
+
+                <section class="generic-404 fallback-copy" aria-labelledby="not-found-title">
+                    <div class="fallback-kicker">ApliNews</div>
+                    <h1 id="not-found-title">عذراً، الصفحة غير موجودة.</h1>
+                    <p class="fallback-lead">يمكنك العودة إلى ApliNews لاكتشاف تجربة الأخبار الذكية، أو الرجوع إلى الصفحة الرئيسية.</p>
+                    <div class="fallback-actions">
+                        <a class="btn btn-primary" href="/aplinews/">اكتشاف ApliNews <span aria-hidden="true">←</span></a>
+                        <a class="btn btn-outline-dark" href="/">الصفحة الرئيسية</a>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="fallback-footer">
+            <span>© 2026 Aplitiq Ltd</span>
+            <span><a href="/privacy-policy/">الخصوصية</a> · <a href="/contact/">تواصل معنا</a></span>
+        </footer>
+    </div>
+
+    <script>
+        (function () {
+            var articlePath = /^\/aplinews\/article\/([^/?#]+)\/?$/;
+            var match = window.location.pathname.match(articlePath);
+            var page = document.querySelector('.fallback-shell');
+            var openInApp = document.getElementById('open-in-app');
+
+            if (!match) {
+                page.classList.add('is-generic');
+                document.title = 'ApliNews — الصفحة غير موجودة';
+                return;
+            }
+
+            var articleId = decodeURIComponent(match[1]);
+            var articleUrl = window.location.href;
+            page.dataset.articleId = articleId;
+            document.body.dataset.articleId = articleId;
+            openInApp.href = articleUrl;
+        }());
+    </script>
+</body>
+</html>
