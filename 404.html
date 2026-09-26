@@ -272,54 +272,284 @@
             *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
             .phone-card, .visual-badge { transform: none; }
         }
+
+        body {
+            min-width: 320px;
+            min-height: 100vh;
+            background: #07142D;
+            color: #FFFFFF;
+        }
+
+        .fallback-shell {
+            min-height: 100vh;
+            min-height: 100svh;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            padding: 2rem 1.25rem;
+            background:
+                radial-gradient(ellipse at 50% 28%, rgba(28, 104, 230, 0.3), transparent 37rem),
+                radial-gradient(ellipse at 50% 100%, rgba(8, 45, 96, 0.52), transparent 32rem),
+                #07142D;
+        }
+
+        .fallback-main {
+            width: 100%;
+            max-width: 440px;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            place-items: center;
+        }
+
+        .launch-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .launch-icon {
+            position: relative;
+            width: 132px;
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            margin-bottom: 1.65rem;
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            border-radius: 32px;
+            background: linear-gradient(145deg, #FFFFFF, #E7F1FF);
+            box-shadow: 0 20px 56px rgba(0, 0, 0, 0.28), 0 0 48px rgba(43, 129, 255, 0.2);
+            transform: rotate(-4deg);
+        }
+
+        .launch-icon::before,
+        .launch-icon::after {
+            content: '';
+            position: absolute;
+            width: 78px;
+            height: 91px;
+            border: 1px solid rgba(31, 104, 219, 0.2);
+            border-radius: 9px;
+            background: #D6E8FF;
+        }
+
+        .launch-icon::before {
+            z-index: -2;
+            transform: translate(9px, -7px) rotate(8deg);
+        }
+
+        .launch-icon::after {
+            z-index: -1;
+            transform: translate(5px, -3px) rotate(4deg);
+            background: #EEF5FF;
+        }
+
+        .icon-page {
+            position: relative;
+            width: 78px;
+            height: 91px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            border: 1px solid #C5DAF8;
+            border-radius: 9px;
+            background: #FFFFFF;
+            box-shadow: 0 5px 12px rgba(7, 20, 45, 0.1);
+            transform: rotate(4deg);
+        }
+
+        .icon-letter {
+            color: #1264D8;
+            font-family: inherit;
+            font-size: 2.5rem;
+            font-weight: 850;
+            line-height: 0.9;
+        }
+
+        .icon-rule {
+            width: 42px;
+            height: 3px;
+            border-radius: 2px;
+            background: #1877F2;
+        }
+
+        .icon-lines {
+            width: 42px;
+            height: 3px;
+            border-radius: 2px;
+            background: #C7D6E9;
+            box-shadow: 0 6px 0 #C7D6E9;
+        }
+
+        .icon-accent {
+            position: absolute;
+            bottom: 11px;
+            width: 11px;
+            height: 4px;
+            border-radius: 4px;
+        }
+
+        .icon-accent-red { right: 14px; background: #D92332; }
+        .icon-accent-green { left: 14px; background: #167443; }
+
+        .launch-icon {
+            width: 116px;
+            aspect-ratio: 1154 / 1173;
+            margin-bottom: 1.2rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            border-radius: 25%;
+            background: #FFFFFF;
+            box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24), 0 0 42px rgba(43, 129, 255, 0.2);
+        }
+
+        .launch-icon::before,
+        .launch-icon::after { display: none; }
+
+        .app-icon-art {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .launch-actions .play-icon {
+            width: 138px;
+            height: 42px;
+            flex: 0 0 138px;
+            border-radius: 0;
+        }
+
+        .play-icon img { display: block; width: 100%; height: 100%; object-fit: contain; }
+
+        .brand-name {
+            margin: 0 0 1.15rem;
+            color: #FFFFFF;
+            font-size: 1.45rem;
+            font-weight: 750;
+            line-height: 1.2;
+            letter-spacing: 0;
+        }
+
+        .brand-name span { color: #45A0FF; }
+
+        .launch-heading {
+            max-width: 390px;
+            margin: 0 0 0.85rem;
+            color: #FFFFFF;
+            font-size: clamp(1.65rem, 7vw, 2.25rem);
+            font-weight: 750;
+            line-height: 1.5;
+            letter-spacing: 0;
+        }
+
+        .launch-heading span { color: #56A8FF; }
+
+        .launch-message {
+            max-width: 340px;
+            margin: 0 0 1.7rem;
+            color: #B9C9E2;
+            font-size: 0.98rem;
+            line-height: 1.85;
+        }
+
+        .launch-actions {
+            width: 100%;
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .launch-actions .btn,
+        .launch-actions .play-button {
+            width: 100%;
+            min-height: 54px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .launch-actions .btn-primary {
+            border: 1px solid #5AA7FF;
+            background: linear-gradient(105deg, #1469E8, #2789FF);
+            color: #FFFFFF;
+            box-shadow: 0 10px 26px rgba(25, 112, 235, 0.28);
+        }
+
+        .launch-actions .btn-primary:hover {
+            background: linear-gradient(105deg, #0E5ED5, #1978EE);
+            color: #FFFFFF;
+        }
+
+        .launch-actions .play-button {
+            border: 1px solid rgba(181, 207, 243, 0.28);
+            background: rgba(255, 255, 255, 0.045);
+            color: #EAF2FF;
+            box-shadow: none;
+        }
+
+        .launch-actions .play-button:hover {
+            border-color: rgba(113, 175, 255, 0.72);
+            background: rgba(42, 113, 209, 0.16);
+            color: #FFFFFF;
+            transform: translateY(-1px);
+        }
+
+        .launch-actions .play-button small { color: #A8BBD8; }
+
+        .launch-actions .play-icon { background: transparent; }
+
+        .generic-404 { display: none; }
+        .is-generic .article-fallback { display: none; }
+        .is-generic .generic-404 { display: flex; }
+
+        @media (max-width: 480px) {
+            .fallback-shell { padding: 1.5rem 1.35rem; }
+            .launch-icon { width: 108px; margin-bottom: 1rem; }
+            .launch-message { font-size: 0.94rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .launch-icon { transform: none; }
+        }
     </style>
 </head>
 <body>
     <div class="fallback-shell">
-        <header class="fallback-header">
-            <a class="fallback-logo" href="/aplinews/" aria-label="ApliNews">Apli<span>News</span></a>
-            <a class="header-link" href="/">Aplitiq</a>
-        </header>
-
         <main class="fallback-main">
-            <div class="fallback-grid">
-                <section class="article-fallback fallback-copy" aria-labelledby="article-title">
-                    <div class="fallback-kicker">ApliNews</div>
-                    <h1 id="article-title">هذا الخبر متوفر<br><span>على تطبيق ApliNews</span></h1>
-                    <p class="fallback-lead">افتح الخبر داخل التطبيق لتستمتع بقراءة أسرع، وتوصيات ذكية، وتجربة أخبار مصممة لك.</p>
-                    <div class="fallback-actions">
-                        <a id="open-in-app" class="btn btn-primary" href="/aplinews/article/" aria-label="فتح الخبر في تطبيق ApliNews">فتح في ApliNews <span aria-hidden="true">←</span></a>
-                        <a class="play-button" href="https://play.google.com/store/apps/details?id=com.aplitiq.aplinews" target="_blank" rel="noopener noreferrer" aria-label="تحميل ApliNews من Google Play">
-                            <span class="play-icon" aria-hidden="true">▶</span>
-                            <span><small>متوفر على</small><strong>Google Play</strong></span>
-                        </a>
-                    </div>
-                    <p class="fallback-note">إذا لم يفتح التطبيق مباشرة، حمّله من Google Play ثم أعد فتح الرابط.</p>
-                </section>
-
-                <div class="article-fallback fallback-visual" aria-label="لقطة من تطبيق ApliNews">
-                    <div class="phone-card">
-                        <img src="/images/maroc-portrait-screenshoot-1.png" alt="واجهة تطبيق ApliNews" width="720" height="1440">
-                    </div>
-                    <div class="visual-badge"><span>ذكاء يناسبك</span><br>أخبار موثوقة، في مكان واحد</div>
+            <section class="launch-content article-fallback" aria-labelledby="article-title">
+                <div class="launch-icon" role="img" aria-label="أيقونة تطبيق ApliNews">
+                    <img class="app-icon-art" src="/images/aplinewsicon.png" alt="">
                 </div>
+                <p class="brand-name" dir="ltr">Apli<span>News</span></p>
+                <h1 class="launch-heading" id="article-title">هذا الخبر متوفر<br><span>على تطبيق ApliNews</span></h1>
+                <p class="launch-message">إذا أردت قراءة هذا المقال، افتحه في تطبيق ApliNews لتكمل القراءة.</p>
+                <div class="launch-actions">
+                    <a id="open-in-app" class="btn btn-primary" href="/aplinews/article/" aria-label="افتح المقال في تطبيق ApliNews">افتح المقال في ApliNews</a>
+                    <a class="play-button" href="https://play.google.com/store/apps/details?id=com.aplitiq.aplinews" target="_blank" rel="noopener noreferrer" aria-label="تحميل ApliNews من Google Play">
+                        <span class="play-icon" aria-hidden="true">
+                            <img src="/images/googleplayicon.png" alt="">
+                        </span>
+                        <span><small>تحميل التطبيق</small><strong>من Google Play</strong></span>
+                    </a>
+                </div>
+            </section>
 
-                <section class="generic-404 fallback-copy" aria-labelledby="not-found-title">
-                    <div class="fallback-kicker">ApliNews</div>
-                    <h1 id="not-found-title">عذراً، الصفحة غير موجودة.</h1>
-                    <p class="fallback-lead">يمكنك العودة إلى ApliNews لاكتشاف تجربة الأخبار الذكية، أو الرجوع إلى الصفحة الرئيسية.</p>
-                    <div class="fallback-actions">
-                        <a class="btn btn-primary" href="/aplinews/">اكتشاف ApliNews <span aria-hidden="true">←</span></a>
-                        <a class="btn btn-outline-dark" href="/">الصفحة الرئيسية</a>
-                    </div>
-                </section>
-            </div>
+            <section class="launch-content generic-404" aria-labelledby="not-found-title">
+                <p class="brand-name" dir="ltr">Apli<span>News</span></p>
+                <h1 class="launch-heading" id="not-found-title">هذا الرابط غير متاح</h1>
+                <p class="launch-message">تابع الأخبار واكتشف المزيد داخل تطبيق ApliNews.</p>
+                <div class="launch-actions">
+                    <a class="btn btn-primary" href="/aplinews/">تابع إلى ApliNews</a>
+                </div>
+            </section>
         </main>
-
-        <footer class="fallback-footer">
-            <span>© 2026 Aplitiq Ltd</span>
-            <span><a href="/privacy-policy/">الخصوصية</a> · <a href="/contact/">تواصل معنا</a></span>
-        </footer>
     </div>
 
     <script>
