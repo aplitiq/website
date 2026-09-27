@@ -550,6 +550,25 @@
                 openInApp.href = 'intent://www.aplitiq.com' + window.location.pathname +
                     '#Intent;scheme=https;package=com.aplitiq.aplinews;S.browser_fallback_url=' +
                     encodeURIComponent(playStoreUrl) + ';end';
+
+                var fallbackTimer;
+                var clearFallbackTimer = function () {
+                    window.clearTimeout(fallbackTimer);
+                    document.removeEventListener('visibilitychange', onVisibilityChange);
+                    window.removeEventListener('pagehide', clearFallbackTimer);
+                };
+                var onVisibilityChange = function () {
+                    if (document.hidden) clearFallbackTimer();
+                };
+
+                openInApp.addEventListener('click', function () {
+                    document.addEventListener('visibilitychange', onVisibilityChange);
+                    window.addEventListener('pagehide', clearFallbackTimer, { once: true });
+                    fallbackTimer = window.setTimeout(function () {
+                        if (!document.hidden) window.location.href = playStoreUrl;
+                        clearFallbackTimer();
+                    }, 1800);
+                });
             } else {
                 openInApp.href = articleUrl;
             }
